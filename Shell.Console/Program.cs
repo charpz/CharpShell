@@ -1,4 +1,5 @@
 ﻿using Shell;
+using Shell.Commands;
 using System.Diagnostics;
 
 Directory.SetCurrentDirectory(ShellEnvironment.DirectoryRoot);
@@ -23,7 +24,8 @@ static void MainLoop()
 
         try
         {
-            CommandHandler.Execute(input);
+            //CommandHandler.Execute(input);
+            CommandInvoker.Invoke(input);
         }
         catch (UnrecognizedCommandException ex)
         {
