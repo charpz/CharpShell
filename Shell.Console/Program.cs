@@ -1,5 +1,6 @@
 ﻿using Shell;
 using Shell.Commands;
+using Shell.Utils;
 using System.Diagnostics;
 
 Directory.SetCurrentDirectory(ShellEnvironment.DirectoryRoot);
@@ -17,15 +18,15 @@ static void MainLoop()
 
         var input = Console.ReadLine();
 
-        if (String.IsNullOrWhiteSpace(input))
-            continue;
+        if (String.IsNullOrWhiteSpace(input)) continue;
 
         stopwatch.Restart();
 
         try
         {
-            //CommandHandler.Execute(input);
-            CommandInvoker.Invoke(input);
+            var (command, args) = Parser.InputParse(input);
+
+            CommandInvoker.Invoke(command, [.. args]);
         }
         catch (UnrecognizedCommandException ex)
         {

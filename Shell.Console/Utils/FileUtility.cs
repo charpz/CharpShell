@@ -1,4 +1,4 @@
-﻿namespace Shell;
+﻿namespace Shell.Utils;
 internal static class FileUtility
 {
     public static List<string> ListCurrentDirectory()

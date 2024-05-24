@@ -1,7 +1,12 @@
-﻿namespace Shell;
+﻿using Shell.Commands;
+using Shell.Utils;
 
+namespace Shell;
+
+[Obsolete("Use " + nameof(CommandHandlerV2) + " instead.")]
 internal static class CommandHandler
 {
+    [Obsolete]
     public static void Execute(string input)
     {
         var (command, arguments) = Parse(input);

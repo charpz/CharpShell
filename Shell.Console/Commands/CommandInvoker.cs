@@ -5,14 +5,14 @@ namespace Shell.Commands;
 
 internal class CommandInvoker
 {
-    public static void Invoke(string command)
-    {        
+    public static void Invoke(string command, string[] args)
+    {
         var type = typeof(CommandHandlerV2);
-        
+
         var instance = (CommandHandlerV2)Activator.CreateInstance(type)!;
-        
+
         var methods = type.GetMethods(
-            BindingFlags.Public | 
+            BindingFlags.Public |
             BindingFlags.Instance |
             BindingFlags.DeclaredOnly);
 
@@ -39,7 +39,7 @@ internal class CommandInvoker
 
         if (matchingMethod is not null)
         {
-            matchingMethod.Invoke(instance, null);
+            _ = matchingMethod.Invoke(instance, [args]);
         }
         else
         {
