@@ -23,10 +23,3 @@ internal static class Parser
         return (command.ToString(), arguments);
     }
 }
-
-//public static (string command, List<string> arguments) InputParse(string input)
-//{
-//    var parts = input.Trim().Split();
-
-//    return (parts[0], parts.Skip(1).ToList());
-//}
