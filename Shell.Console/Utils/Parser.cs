@@ -11,11 +11,11 @@ internal static class Parser
         // The first region is the command, the rest are arguments.
         var command = input[parts[0].Start..parts[0].End];
 
-        var numArgs = numRegions - 1;
+        Span<int> numArgs = stackalloc int[numRegions - 1];
 
-        var arguments = new string[numArgs];
+        var arguments = new string[numArgs[0]];
 
-        for (int i = 1; i <= numArgs; i++)
+        for (int i = 1; i <= numArgs[0]; i++)
         {
             arguments[i - 1] = input[parts[i].Start..parts[i].End].ToString();
         }
