@@ -26,7 +26,7 @@ static void MainLoop()
         {
             var (command, args) = Parser.InputParse(input);
 
-            CommandInvoker.Invoke(command, [.. args]);
+            Command.Invoke(command, [.. args]);
         }
         catch (UnrecognizedCommandException ex)
         {
